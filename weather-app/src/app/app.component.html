@@ -1,0 +1,70 @@
+<div class="search">
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Pretrazite grad..." name="city" [(ngModel)]="getcity">
+  </form>
+</div>
+
+<div class="container"> 
+  <div class="upper-data">
+    <img src="../assets/day.jpg" *ngIf="weatherDetails.main.temp > 15">
+    <img src="../assets/winter.jpg" *ngIf="weatherDetails.main.temp <= 15">
+
+    <div class="weather-data">
+      <div class="location">
+        {{weatherDetails.name}},{{weatherDetails.sys.country}}
+      </div><br>
+      <div class="temperature">{{weatherDetails.main.temp}}°C</div><br>
+      <div class="coord">
+        lon: {{weatherDetails.coord.lon}} <br>
+        lat: {{weatherDetails.coord.lat}}
+      </div>
+    </div>
+  </div>
+
+  <div class="lower-data">
+    <div class="more-info-label">
+      Ostale informacije...
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/coldd.jpg">
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.main.temp_min}}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/hott.jpg">
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.main.temp_max}}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/rain.webp">
+          <span>vlaznost</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.main.humidity}}%
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.jpg">
+          <span>vetar</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherDetails.wind.speed}}km/h
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
